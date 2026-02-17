@@ -18,7 +18,7 @@ if(isset($_POST["Submit"])){
     include_once("connectdb.php");
     $rname = $_POST["rname"];
     $sql2="INSERT INTO `regions` (`r_id`, `r_name`) VALUES (NULL,'{$rname}')";
-    mysqli_query($conn,$sql) or die ("เพิ่มข้อมูลไม่ได้");
+    mysqli_query($conn,$sql2) or die ("เพิ่มข้อมูลไม่ได้");
 }
 
 
@@ -29,11 +29,11 @@ $sql = "SELECT * FROM `regions`";
 $rs = mysqli_query($conn,$sql);
 ?>
 
-<table border="1>
+<table border="1">
     <tr>
         <th>รหัสภาค</th>
         <th>ชื่อภาค</th>
-</tr>
+    </tr>
 
 <?php
 
@@ -43,7 +43,7 @@ while ($data = mysqli_fetch_array($rs)){
         <td><?php echo $data['r_id'];?></td>
         <td><?php echo $data['r_name'];?></td>
         <td width= "80" align="center"><a href="delete_region.php?id=<?php echo $data['r_id'];?>" onClick="return confirm('ยืนยันการลบ?');">
-        <img src="images/delete.jpg" width="20"></a> </td>
+        <img src="images/delete.png" width="20"></a> </td>
 
 </tr>
 <?php }?>
