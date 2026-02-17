@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<h1>งาน i 66010914022 อดิเทพ จำเริญเจือ (อาร์ม)</h1>
+<h1>งาน i  อดิเทพ จำเริญเจือ (อาร์ม)</h1>
 <form method="post"action="">
     ชื่อภาค <input type="text"name="rname" autofocus required>
     <button type="submit" name ="Submit">บันทึก</button>
@@ -16,6 +16,7 @@
 <?php
 if(isset($_POST["Submit"])){    
     include_once("connectdb.php");
+    $rname = $_POST["rname"];
     $sql2="INSERT INTO `regions` (`r_id`, `r_name`) VALUES (NULL,'{$rname}')";
     mysqli_query($conn,$sql) or die ("เพิ่มข้อมูลไม่ได้");
 }
@@ -41,7 +42,8 @@ while ($data = mysqli_fetch_array($rs)){
 <tr>
         <td><?php echo $data['r_id'];?></td>
         <td><?php echo $data['r_name'];?></td>
-        <td width= "80" align="center"><img src="images/delete.jpg" width="20"> </td>
+        <td width= "80" align="center"><a href="delete_region.php?id=<?php echo $data['r_id'];?>" onClick="return confirm('ยืนยันการลบ?');">
+        <img src="images/delete.jpg" width="20"></a> </td>
 
 </tr>
 <?php }?>
