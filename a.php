@@ -44,6 +44,7 @@ while ($data = mysqli_fetch_array($rs)){
 </tr>
 <?php }?>
 
+
 </table>
 <?php
 mysqli_close($conn);
